@@ -13,8 +13,8 @@ namespace CommuterRailroadService
 
         public void CreateRailLinkForStation(Station origin,Station destination,int distance)
         {
-            stations.Add(origin);
-            stations.Add(destination);
+            if (!stations.Contains(origin)) { stations.Add(origin);}
+            if (!stations.Contains(destination)) { stations.Add(destination);}
             origin.railLinks.Add(new RailLink()
             {
                 origin = origin,
