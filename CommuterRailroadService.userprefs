@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{07FA2452-EB8D-4006-B016-48707CB50F84}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CommuterRailroadService/StationShould.cs">
+    <Files>
+      <File FileName="CommuterRailroadService/GraphShould.cs" Line="8" Column="10" />
+      <File FileName="CommuterRailroadService/StationShould.cs" Line="14" Column="41" />
+      <File FileName="CommuterRailroadService/Station.cs" Line="1" Column="1" />
+      <File FileName="CommuterRailroadService/RailLink.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.CommuterRailroadService PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
