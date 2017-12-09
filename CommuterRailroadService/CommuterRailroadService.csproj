@@ -47,10 +47,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RouteGraphShould.cs" />
     <Compile Include="StationShould.cs" />
     <Compile Include="Station.cs" />
     <Compile Include="RailLink.cs" />
+    <Compile Include="RouteGraphShould.cs" />
+    <Compile Include="RouteGraph.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
