@@ -50,6 +50,36 @@ namespace CommuterRailroadService
         }
 
         [Test]
+        public void CreateMultipleRailLinksForMultipleStation()
+        {
+            var station1 = new Station("A");
+            var station2 = new Station("B");
+            var station3 = new Station("C");
+            var station4 = new Station("D");
+            var sut = new RouteGraph();
+
+            sut.CreateRailLinkForStation(station1, station2, 5);
+            sut.CreateRailLinkForStation(station1, station3, 4);
+            sut.CreateRailLinkForStation(station2, station3, 1);
+            sut.CreateRailLinkForStation(station2, station4, 2);
+
+
+            Assert.That(station1.railLinks[0].origin.Equals(station1));
+            Assert.That(station2.railLinks[0].origin.Equals(station2));
+            Assert.That(station2.railLinks[1].origin.Equals(station2));
+
+
+            Assert.That(station1.railLinks[0].destination.Equals(station2));
+            Assert.That(station2.railLinks[0].destination.Equals(station3));
+            Assert.That(station2.railLinks[1].destination.Equals(station4));
+
+            Assert.That(station1.railLinks[0].distance.Equals(5));
+            Assert.That(station2.railLinks[0].distance.Equals(1));
+            Assert.That(station2.railLinks[1].distance.Equals(2));
+
+        }
+
+        [Test]
         public void ContainAListOfStations()
         {
             var station1 = new Station("A");
