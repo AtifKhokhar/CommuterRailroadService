@@ -12,3 +12,4 @@ C:/git/katas/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterR
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/bin/Debug/nunit.framework.xml
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.exe
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.pdb
+/Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.csprojResolveAssemblyReference.cache

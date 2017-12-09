@@ -49,5 +49,38 @@ namespace CommuterRailroadService
             Assert.That(station1.railLinks[1].distance.Equals(4));
         }
 
+        [Test]
+        public void ContainAListOfStations()
+        {
+            var station1 = new Station("A");
+            var station2 = new Station("B");
+            var station3 = new Station("C");
+            var sut = new RouteGraph();
+
+            sut.CreateRailLinkForStation(station1, station2, 5);
+            sut.CreateRailLinkForStation(station1, station3, 4);
+
+
+            Assert.That(sut.stations[0].Equals(station1));
+            Assert.That(sut.stations[1].Equals(station2));
+            Assert.That(sut.stations[2].Equals(station3));
+        }
+
+        [Test]
+        public void NotContainDuplicateStations()
+        {
+            var station1 = new Station("A");
+            var station2 = new Station("B");
+            var station3 = new Station("C");
+            var sut = new RouteGraph();
+
+            sut.CreateRailLinkForStation(station1, station2, 5);
+            sut.CreateRailLinkForStation(station1, station3, 4);
+            sut.CreateRailLinkForStation(station2, station3, 1);
+            var actualStations = sut.stations;
+
+            Assert.That(actualStations.Count.Equals(3));
+        }
+
     }
 }
