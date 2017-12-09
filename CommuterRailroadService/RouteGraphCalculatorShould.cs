@@ -29,14 +29,15 @@ namespace CommuterRailroadService
 
         }
         
-        [Test]
-        public void CalculateDistanceBetweenTwoLinkedStations()
+        [TestCase("A","B",5)]
+        [TestCase("B", "C", 4)]
+        public void CalculateDistanceBetweenTwoLinkedStations(string origin,string destination,int expectedDistance)
         {
             sut = new RouteGraphCalculator(graph); 
 
-            var actualResult = this.sut.CalculateDistance("A", "B");
+            var actualResult = this.sut.CalculateDistance(origin, destination);
 
-            Assert.That(actualResult.Equals(5)); 
+            Assert.That(actualResult.Equals(expectedDistance)); 
 
         }
 
