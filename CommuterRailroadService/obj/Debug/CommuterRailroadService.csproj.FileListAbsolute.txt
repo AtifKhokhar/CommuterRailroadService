@@ -4,12 +4,11 @@ C:/git/katas/CommuterRailroadService/CommuterRailroadService/bin/Debug/CommuterR
 C:/git/katas/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.csproj.CoreCompileInputs.cache
 C:/git/katas/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.exe
 C:/git/katas/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.pdb
-/Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.csproj.CoreCompileInputs.cache
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/bin/Debug/CommuterRailroadService.exe.config
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/bin/Debug/CommuterRailroadService.exe
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/bin/Debug/CommuterRailroadService.pdb
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/bin/Debug/nunit.framework.dll
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/bin/Debug/nunit.framework.xml
+/Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.csproj.CoreCompileInputs.cache
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.exe
 /Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.pdb
-/Users/atifkhokhar/Documents/Git/CommuterRailroadService/CommuterRailroadService/obj/Debug/CommuterRailroadService.csprojResolveAssemblyReference.cache

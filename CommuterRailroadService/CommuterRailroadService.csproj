@@ -52,6 +52,8 @@
     <Compile Include="RailLink.cs" />
     <Compile Include="RouteGraphShould.cs" />
     <Compile Include="RouteGraph.cs" />
+    <Compile Include="RouteGraphCalculator.cs" />
+    <Compile Include="RouteGraphCalculatorShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
