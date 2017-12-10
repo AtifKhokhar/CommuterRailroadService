@@ -52,16 +52,19 @@ namespace CommuterRailroadService
 
         }
 
-        [TestCase("A", "B","C", 9)]
-        [TestCase("A", "B", "D", 17,"C")]
-        [TestCase("A", "D", "C", 13)]
-        [TestCase("A", "E", "D", 22, "B","C")]
+        [TestCase("A", "B", 5)]
+        [TestCase("A", "D", 5)]
+        [TestCase("B", "C", 4)]
+        [TestCase("A" ,"C", 9,"B")]
+        [TestCase("A", "D", 17,"B","C")]
+        [TestCase("A", "C", 13,"D")]
+        [TestCase("A","D", 22,"E", "B","C")]
 
-        public void CalculateDistanceBetweenThreeOrMoreLinkedStations(string origin,string stop1,string destination,int expectedDistance,string stop2=null,string stop3=null)
+        public void CalculateDistanceBetweenTwoOrMoreLinkedStations(string origin,string destination,int expectedDistance,string stop1=null,string stop2=null,string stop3=null)
         {
             sut = new RouteGraphCalculator(graph);
 
-            var actualResult = this.sut.CalculateDistanceBetweenMultipleLegs(origin,stop1,destination,stop2,stop3);
+            var actualResult = this.sut.CalculateDistanceBetweenLinkedStations(origin,destination,stop1,stop2,stop3);
 
             Assert.That(actualResult.Equals(expectedDistance));
 
