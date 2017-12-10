@@ -13,7 +13,7 @@ namespace CommuterRailroadService
             this.routeGraph = routeGraph;
         }
 
-        public int CalculateDistance(string stationNameA, string stationNameB)
+        public int CalculateDistanceBetweenTwoStations(string stationNameA, string stationNameB)
         {
 
             var routeOrigin = routeGraph.stations.Find(o => o.name == stationNameA);
@@ -29,8 +29,8 @@ namespace CommuterRailroadService
 
         public int CalculateDistanceBetweenMultipleLegs(string origin, string stop1,string destination)
         {
-            var routeLegOneDistance = this.CalculateDistance(origin,stop1);
-            var routeLegTwoDistance = this.CalculateDistance(stop1, destination);
+            var routeLegOneDistance = this.CalculateDistanceBetweenTwoStations(origin,stop1);
+            var routeLegTwoDistance = this.CalculateDistanceBetweenTwoStations(stop1, destination);
 
             return routeLegOneDistance += routeLegTwoDistance;
 

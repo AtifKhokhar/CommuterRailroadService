@@ -26,22 +26,26 @@ namespace CommuterRailroadService
 
             graph.CreateRailLinkForStation(stationA, stationB, 5);
             graph.CreateRailLinkForStation(stationB, stationC, 4);
+            graph.CreateRailLinkForStation(stationA, stationD, 5);
+            graph.CreateRailLinkForStation(stationD, stationC, 8);
 
         }
         
         [TestCase("A","B",5)]
+        [TestCase("A", "D", 5)]
         [TestCase("B", "C", 4)]
         public void CalculateDistanceBetweenTwoLinkedStations(string origin,string destination,int expectedDistance)
         {
             sut = new RouteGraphCalculator(graph); 
 
-            var actualResult = this.sut.CalculateDistance(origin, destination);
+            var actualResult = this.sut.CalculateDistanceBetweenTwoStations(origin, destination);
 
             Assert.That(actualResult.Equals(expectedDistance)); 
 
         }
 
         [TestCase("A", "B","C", 9)]
+        [TestCase("A", "D", "C", 13)]
         public void CalculateDistanceBetweenThreeLinkedStations(string origin,string stop1,string destination,int expectedDistance)
         {
             sut = new RouteGraphCalculator(graph);
