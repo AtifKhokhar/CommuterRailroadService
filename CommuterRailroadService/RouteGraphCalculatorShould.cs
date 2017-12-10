@@ -41,6 +41,16 @@ namespace CommuterRailroadService
 
         }
 
+        [TestCase("A", "B","C", 9)]
+        public void CalculateDistanceBetweenThreeLinkedStations(string origin,string stop1,string destination,int expectedDistance)
+        {
+            sut = new RouteGraphCalculator(graph);
+
+            var actualResult = this.sut.CalculateDistanceBetweenMultipleLegs(origin,stop1,destination);
+
+            Assert.That(actualResult.Equals(expectedDistance));
+
+        }
 
     }
 
