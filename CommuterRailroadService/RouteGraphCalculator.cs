@@ -63,6 +63,10 @@ namespace CommuterRailroadService
                 routeFinalLegDistance = this.CalculateDistanceBetweenTwoStations(origin, destination);
             }
 
+            if (routeFinalLegDistance == 0)
+            {
+                return 0;
+            }
             return routeLegOneDistance += routeLegTwoDistance + routeLegThreeDistance + routeFinalLegDistance;
         }
     }
