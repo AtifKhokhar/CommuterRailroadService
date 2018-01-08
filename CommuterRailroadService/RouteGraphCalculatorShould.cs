@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace CommuterRailroadService
@@ -39,48 +40,55 @@ namespace CommuterRailroadService
 
 
         }
-        
-        [TestCase("A","B",5)]
+
+        [TestCase("A", "B", 5)]
         [TestCase("A", "D", 5)]
         [TestCase("B", "C", 4)]
-        public void CalculateDistanceBetweenTwoLinkedStations(string origin,string destination,int expectedDistance)
+        public void CalculateDistanceBetweenTwoLinkedStations(string origin, string destination, int expectedDistance)
         {
-            sut = new RouteGraphCalculator(graph); 
+            sut = new RouteGraphCalculator(graph);
 
             var actualResult = this.sut.CalculateDistanceBetweenTwoStations(origin, destination);
 
-            Assert.That(actualResult.Equals(expectedDistance)); 
+            Assert.That(actualResult.Equals(expectedDistance));
 
         }
 
         [TestCase("A", "B", 5)]
         [TestCase("A", "D", 5)]
         [TestCase("B", "C", 4)]
-        [TestCase("A" ,"C", 9,"B")]
-        [TestCase("A", "D", 17,"B","C")]
-        [TestCase("A", "C", 13,"D")]
-        [TestCase("A","D", 22,"E", "B","C")]
-        [TestCase("A","D",0,"E")]
+        [TestCase("A", "C", 9, "B")]
+        [TestCase("A", "D", 17, "B", "C")]
+        [TestCase("A", "C", 13, "D")]
+        [TestCase("A", "D", 22, "E", "B", "C")]
+        [TestCase("A", "D", 0, "E")]
 
-        public void CalculateDistanceBetweenTwoOrMoreLinkedStations(string origin,string destination,int expectedDistance,string stop1=null,string stop2=null,string stop3=null)
+        public void CalculateDistanceBetweenTwoOrMoreLinkedStations(string origin, string destination, int expectedDistance, string stop1 = null, string stop2 = null, string stop3 = null)
         {
             sut = new RouteGraphCalculator(graph);
 
-            var actualResult = this.sut.CalculateDistanceBetweenLinkedStations(origin,destination,stop1,stop2,stop3);
+            var actualResult = this.sut.CalculateDistanceBetweenLinkedStations(origin, destination, stop1, stop2, stop3);
 
             Assert.That(actualResult.Equals(expectedDistance));
 
         }
 
 
-        [Test]
-        public void CalculateRouteDistance()
+        [TestCase("A,B", 5)]
+        [TestCase("A,D", 5)]
+        [TestCase("B,C", 4)]
+        [TestCase("A,B,C", 9)]
+        [TestCase("A,B,C,D", 17)]
+        [TestCase("A,D,C", 13)]
+        [TestCase("A,E,B,C,D", 22)]
+        [TestCase("A,E,D", 0)]
+        public void CalculateRouteDistance(string inputRoute,int expectedDistance)
         {
             sut = new RouteGraphCalculator(graph);
-            var route = new List<string>() {"A","B"};
+            var route = inputRoute.Split(',').ToList();
             var actualResult = this.sut.CalculateDistanceOfRoute(route);
             
-            Assert.That(actualResult.Equals(5));
+            Assert.That(actualResult.Equals(expectedDistance));
 
         }
 

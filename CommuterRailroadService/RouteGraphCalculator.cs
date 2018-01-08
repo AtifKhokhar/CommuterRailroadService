@@ -73,14 +73,12 @@ namespace CommuterRailroadService
 
         public int CalculateDistanceOfRoute(List<string> route)
         {
-            var totalDistance =0;
+            var totalDistance = 0;
             foreach (var stop in route)
             {
-                var adjacentStop = route.Skip(1).Take(1);
-               totalDistance += this.CalculateDistanceBetweenTwoStations(stop, adjacentStop.Single());   
-               
-            }
-                  
+                var adjacentStop = route.SkipWhile(element => element != stop).Skip(1).FirstOrDefault();
+                totalDistance += this.CalculateDistanceBetweenTwoStations(stop, adjacentStop);   
+            }     
             return totalDistance;
         }
     }
