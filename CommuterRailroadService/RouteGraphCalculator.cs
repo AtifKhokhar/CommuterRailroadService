@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CommuterRailroadService
@@ -68,6 +69,19 @@ namespace CommuterRailroadService
                 return 0;
             }
             return routeLegOneDistance += routeLegTwoDistance + routeLegThreeDistance + routeFinalLegDistance;
+        }
+
+        public int CalculateDistanceOfRoute(List<string> route)
+        {
+            var totalDistance =0;
+            foreach (var stop in route)
+            {
+                var adjacentStop = route.Skip(1).Take(1);
+               totalDistance += this.CalculateDistanceBetweenTwoStations(stop, adjacentStop.Single());   
+               
+            }
+                  
+            return totalDistance;
         }
     }
 }

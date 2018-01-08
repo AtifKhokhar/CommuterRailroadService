@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace CommuterRailroadService
@@ -68,6 +69,18 @@ namespace CommuterRailroadService
             var actualResult = this.sut.CalculateDistanceBetweenLinkedStations(origin,destination,stop1,stop2,stop3);
 
             Assert.That(actualResult.Equals(expectedDistance));
+
+        }
+
+
+        [Test]
+        public void CalculateRouteDistance()
+        {
+            sut = new RouteGraphCalculator(graph);
+            var route = new List<string>() {"A","B"};
+            var actualResult = this.sut.CalculateDistanceOfRoute(route);
+            
+            Assert.That(actualResult.Equals(5));
 
         }
 
