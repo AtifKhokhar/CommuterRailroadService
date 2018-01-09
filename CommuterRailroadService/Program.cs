@@ -36,27 +36,26 @@ namespace CommuterRailroadService
             graph.CreateRailLinkForStation(stationE, stationB, 3); //EB3
             graph.CreateRailLinkForStation(stationA, stationE, 7); //AE7
 
-            var listOfRoutes = new List<InputRoute>
+            var listOfRoutes = new List<List<string>>
             {
-                new InputRoute("A","C","B"),
-                new InputRoute("A","D"),
-                new InputRoute("A","C","D"),
-                new InputRoute("A","D","E","B","C"),
-                new InputRoute("A","D","E"),
+                new List<string>(){"A","B","C"},
+                new List<string>(){"A","D"},
+                new List<string>(){"A","D","C"},
+                new List<string>(){"A","E","B","C","D"},
+                new List<string>(){"A","E","D"},
             };
             foreach (var route in listOfRoutes)
             {
 
-             var calculatedDistance = graphCalculator.CalculateDistanceBetweenLinkedStations(route.origin, route.destination, route.stop1,
-                    route.stop2, route.stop3);
+             var calculatedDistance = graphCalculator.CalculateDistanceOfRoute(route);
 
                 if (calculatedDistance == 0)
                 {
-                  Console.WriteLine("Distance for Route {0}-{1}-{2}-{3}-{4} : NO SUCH ROUTE",route.origin,route.stop1,route.stop2,route.stop3,route.destination);
+                  Console.WriteLine("Distance for Route {0} : NO SUCH ROUTE", String.Join("-",route));
                 }
                 else
                 {
-                  Console.WriteLine($"Distance for Route {route.origin}-{route.stop1}-{route.stop2}-{route.stop3}-{route.destination} : {calculatedDistance}");
+                  Console.WriteLine($"Distance for Route {String.Join("-", route)} : {calculatedDistance}");
                 }
                
 

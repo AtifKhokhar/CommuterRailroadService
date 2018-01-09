@@ -33,9 +33,20 @@ namespace CommuterRailroadService
         {
             var totalDistance = 0;
             foreach (var stop in route)
-            {
+            {  
+
                 var adjacentStop = route.SkipWhile(element => element != stop).Skip(1).FirstOrDefault();
-                totalDistance += this.CalculateDistanceBetweenTwoStations(stop, adjacentStop);   
+
+                if (adjacentStop != null)
+                {
+                    var distance = this.CalculateDistanceBetweenTwoStations(stop, adjacentStop);
+                    if (distance == 0)
+                    {
+                        totalDistance = 0;
+                    }
+                    totalDistance += distance;
+                }
+
             }     
             return totalDistance;
         }
