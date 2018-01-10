@@ -71,6 +71,8 @@ namespace CommuterRailroadService
             foreach (var linkedStationRailLink in originLinkedStations.Select(s => s.railLinks))
             {
                 numberOfRoutes += linkedStationRailLink.Count(rl => rl.destination == routeDestination);
+                linkedStationRailLink.Where(rl => rl.destination == routeDestination).ToList().ForEach(s => s.destination.isVisited = true);
+
 
                 var linkedStationRailLinkStations =
                     linkedStationRailLink.Select(rl => rl.destination).Where(s => s.isVisited == false);
@@ -78,12 +80,14 @@ namespace CommuterRailroadService
                 foreach (var stationRailLink in linkedStationRailLinkStations.Select(s => s.railLinks))
                 {
                     numberOfRoutes += stationRailLink.Count(rl => rl.destination == routeDestination);
+                    stationRailLink.Where(rl => rl.destination == routeDestination).ToList().ForEach(s => s.destination.isVisited = true);
 
                     var stationRailLinkStations = linkedStationRailLink.Select(rl => rl.destination).Where(s => s.isVisited == false);
 
                     foreach (var railLink in stationRailLinkStations.Select(s => s.railLinks))
                     {
                         numberOfRoutes += railLink.Count(rl => rl.destination == routeDestination);
+                        railLink.Where(rl => rl.destination == routeDestination).ToList().ForEach(s => s.destination.isVisited = true);
                     }
                 }
             }
