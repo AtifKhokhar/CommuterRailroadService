@@ -73,6 +73,15 @@ namespace CommuterRailroadService
 
         }
 
+        [Test]
+        public void CalculateNumberOfRoutes()
+        {
+            sut = new RouteGraphCalculator(graph);
+            var actualResult = this.sut.CalculateNumberOfRoutesBetweenTwoStations("A", "D");
+
+            Assert.That(actualResult.Equals(3));
+        }
+
     }
 
 }

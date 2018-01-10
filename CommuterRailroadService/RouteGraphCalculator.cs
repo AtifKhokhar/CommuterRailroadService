@@ -33,7 +33,7 @@ namespace CommuterRailroadService
         {
             var totalDistance = 0;
             foreach (var stop in route)
-            {  
+            {
 
                 var adjacentStop = route.SkipWhile(element => element != stop).Skip(1).FirstOrDefault();
 
@@ -49,6 +49,46 @@ namespace CommuterRailroadService
 
             }     
             return totalDistance;
+        }
+
+        public int CalculateNumberOfRoutesBetweenTwoStations(string origin, string destination)
+        {
+
+            var routeOrigin = routeGraph.stations.Find(o => o.name == origin);
+
+            var routeDestination = routeGraph.stations.Find(d => d.name == destination);
+
+            var numberOfRoutes = routeOrigin.railLinks.Count(rl => rl.destination == routeDestination);
+
+            routeOrigin.railLinks.Where(rl => rl.destination == routeDestination).ToList().ForEach(s => s.destination.isVisited = true);
+               
+
+            var originRailLinks = routeOrigin.railLinks;
+
+            var originLinkedStations = originRailLinks.Select(rl => rl.destination).Where(s => s.isVisited == false);
+
+
+            foreach (var linkedStationRailLink in originLinkedStations.Select(s => s.railLinks))
+            {
+                numberOfRoutes += linkedStationRailLink.Count(rl => rl.destination == routeDestination);
+
+                var linkedStationRailLinkStations =
+                    linkedStationRailLink.Select(rl => rl.destination).Where(s => s.isVisited == false);
+
+                foreach (var stationRailLink in linkedStationRailLinkStations.Select(s => s.railLinks))
+                {
+                    numberOfRoutes += stationRailLink.Count(rl => rl.destination == routeDestination);
+
+                    var stationRailLinkStations = linkedStationRailLink.Select(rl => rl.destination).Where(s => s.isVisited == false);
+
+                    foreach (var railLink in stationRailLinkStations.Select(s => s.railLinks))
+                    {
+                        numberOfRoutes += railLink.Count(rl => rl.destination == routeDestination);
+                    }
+                }
+            }
+
+            return numberOfRoutes;
         }
     }
 }
