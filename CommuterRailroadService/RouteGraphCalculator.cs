@@ -14,7 +14,7 @@ namespace CommuterRailroadService
             this.routeGraph = routeGraph;
         }
 
-        public int CalculateDistanceBetweenTwoStations(string stationNameA, string stationNameB)
+        private int CalculateDistanceBetweenTwoStations(string stationNameA, string stationNameB)
         {
 
             var routeOrigin = routeGraph.stations.Find(o => o.name == stationNameA);
