@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CommuterRailroadService
@@ -21,53 +22,33 @@ namespace CommuterRailroadService
             var routeDestination = routeGraph.stations.Find(d => d.name == stationNameB);
 
             var routeDistances = routeOrigin.railLinks.Where(rl => rl.destination == routeDestination)
-                                       .Select(rl => rl.distance).Distinct();
+                                       .Select(rl => rl.distance);
 
 
             return routeDistances.Sum();
         }
 
-        public int CalculateDistanceBetweenLinkedStations(string origin,string destination,string stop1=null,string stop2=null,string stop3=null)
+
+        public int CalculateDistanceOfRoute(List<string> route)
         {
-            var routeLegOneDistance = 0;
-            var routeLegTwoDistance = 0;
-            var routeLegThreeDistance = 0;
-            var routeFinalLegDistance = 0;
+            var totalDistance = 0;
+            foreach (var stop in route)
+            {  
 
-            if (stop1 != null)
-            {
-                routeLegOneDistance = this.CalculateDistanceBetweenTwoStations(origin, stop1);
+                var adjacentStop = route.SkipWhile(element => element != stop).Skip(1).FirstOrDefault();
 
-                if (stop2 != null)
+                if (adjacentStop != null)
                 {
-                    routeLegTwoDistance = this.CalculateDistanceBetweenTwoStations(stop1, stop2);
-
-                    if (stop3 != null)
+                    var distance = this.CalculateDistanceBetweenTwoStations(stop, adjacentStop);
+                    if (distance == 0)
                     {
-                        routeLegThreeDistance = this.CalculateDistanceBetweenTwoStations(stop2, stop3);
-                        routeFinalLegDistance = this.CalculateDistanceBetweenTwoStations(stop3, destination);
-
+                        totalDistance = 0;
                     }
-                    else
-                    {
-                        routeFinalLegDistance = this.CalculateDistanceBetweenTwoStations(stop2, destination);
-                    }
+                    totalDistance += distance;
                 }
-                else
-                {
-                    routeFinalLegDistance = this.CalculateDistanceBetweenTwoStations(stop1, destination);
-                }
-            }
-            else
-            {
-                routeFinalLegDistance = this.CalculateDistanceBetweenTwoStations(origin, destination);
-            }
 
-            if (routeFinalLegDistance == 0)
-            {
-                return 0;
-            }
-            return routeLegOneDistance += routeLegTwoDistance + routeLegThreeDistance + routeFinalLegDistance;
+            }     
+            return totalDistance;
         }
     }
 }
