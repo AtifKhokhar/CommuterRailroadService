@@ -22,7 +22,7 @@ namespace CommuterRailroadService
             var routeDestination = routeGraph.stations.Find(d => d.name == stationNameB);
 
             var routeDistances = routeOrigin.railLinks.Where(rl => rl.destination == routeDestination)
-                                       .Select(rl => rl.distance).Distinct();
+                                       .Select(rl => rl.distance);
 
 
             return routeDistances.Sum();
